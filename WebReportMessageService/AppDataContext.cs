@@ -9,6 +9,7 @@ namespace WebReportMessageService
     public class AppDataContext : DbContext
     {
         public DbSet<Message> Messages { get; set; }
+        public DbSet<NetworkResource> NetworkResources { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -44,7 +44,7 @@ export class MessageList extends Component {
                             <a class="page-link" onClick={e => this.onPageChange(this.state.pageNumber - 1)}>Назад</a>
                         </li>
                         <li className={"page-item" + this.state.pageNumber === this.state.pageTotal ? " disabled" : ""}>
-                            <a class="page-link" onClick={e => this.onPageChange(this.state.pageNumber + 1)} > Вперед</a>
+                            <a class="page-link" onClick={e => this.onPageChange(this.state.pageNumber + 1)} >Вперед</a>
                         </li>
                     </ul>
                 </nav>

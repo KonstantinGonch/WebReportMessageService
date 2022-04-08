@@ -36,6 +36,9 @@ export class NavMenu extends Component {
                                 <li class="nav-item">
                                     <a class="nav-link" href="/">Ввод сообщения</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/scanResources">Сканируемые ресурсы</a>
+                                </li>
                             </ul>
                         </Collapse>
                     </Container>
