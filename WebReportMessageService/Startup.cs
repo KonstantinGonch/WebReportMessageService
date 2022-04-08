@@ -21,6 +21,8 @@ namespace WebReportMessageService
         {
 
             services.AddControllersWithViews();
+            services.AddSwaggerGen();
+
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -35,6 +37,8 @@ namespace WebReportMessageService
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {

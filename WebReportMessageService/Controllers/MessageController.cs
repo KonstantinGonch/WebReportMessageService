@@ -12,6 +12,7 @@ namespace WebReportMessageService.Controllers
     public class MessageController : ControllerBase
     {
         private readonly ILogger<MessageController> _logger;
+        private const int _pageSize = 5;
 
         public MessageController(ILogger<MessageController> logger)
         {
@@ -20,11 +21,13 @@ namespace WebReportMessageService.Controllers
 
         [HttpGet]
         [Route("list")]
-        public  IEnumerable<Message> Get()
+        public  MessageListPageModel Get(int pageNumber)
         {
             using (var dbContext = new AppDataContext())
             {
-                return dbContext.Messages.ToList();
+                var pageMessages = dbContext.Messages.OrderByDescending(m => m.MessageDate).Skip((pageNumber-1) * _pageSize).Take(_pageSize).ToList();
+                var totalPages = (int)Math.Ceiling(dbContext.Messages.Count() / (double)_pageSize);
+                return new MessageListPageModel { Messages = pageMessages, TotalPages = totalPages, PageNumber = pageNumber };
             }
         }
 

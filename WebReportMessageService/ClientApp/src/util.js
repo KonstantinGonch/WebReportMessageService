@@ -15,3 +15,8 @@
     });
     return response; // parses JSON response into native JavaScript objects
 }
+
+export const getData = async (url = '',) => {
+    const response = await fetch(url);
+    return await response.json(); 
+}
