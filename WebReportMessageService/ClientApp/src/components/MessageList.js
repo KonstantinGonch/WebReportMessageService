@@ -15,7 +15,7 @@ export class MessageList extends Component {
     }
 
     async getPageMessages() {
-        return await getData("http://localhost:5000/api/message/list?pageNumber=" + this.state.pageNumber);
+        return await getData("api/message/list?pageNumber=" + this.state.pageNumber);
     }
 
     async componentDidMount() {

@@ -17,7 +17,7 @@ export class Home extends Component {
         e.preventDefault();
 
         this.setState({ loading: true });
-        const response = await postData("http://localhost:5000/api/message/save", { content: this.state.messageContent, messageType: this.state.messageType })
+        const response = await postData("api/message/save", { content: this.state.messageContent, messageType: this.state.messageType })
 
         this.setState({ loading: false });
     }
