@@ -1,0 +1,22 @@
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+
