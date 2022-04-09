@@ -12,7 +12,7 @@ namespace WebReportMessageService.Controllers
     public class ScanJobController : ControllerBase
     {
         private readonly ILogger<ScanJobController> _logger;
-        private const int _pageSize = 10;
+        private const int _pageSize = 5;
 
         public ScanJobController(ILogger<ScanJobController> logger)
         {

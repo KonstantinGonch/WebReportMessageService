@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebReportMessageService.Jobs;
 
 namespace WebReportMessageService
 {
@@ -22,6 +23,7 @@ namespace WebReportMessageService
 
             services.AddControllersWithViews();
             services.AddSwaggerGen();
+            services.AddHostedService<ScanJob>();
 
 
             // In production, the React files will be served from this directory

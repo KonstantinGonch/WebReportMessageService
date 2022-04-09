@@ -18,5 +18,9 @@
 
 export const getData = async (url = '',) => {
     const response = await fetch(url);
-    return await response.json();
+    const text = await response.text();
+    if (text)
+        return JSON.parse(text);
+    else
+        return {};
 }

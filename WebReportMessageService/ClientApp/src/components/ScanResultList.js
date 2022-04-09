@@ -20,13 +20,13 @@ export class ScanResultList extends Component {
     async componentDidMount() {
         this.setState({ loading: true });
         const pageJobResults = await this.getPageJobResults();
-        this.setState({ jobResults: pageJobResults.scanJobResults, pageTotal: pageJobResults.totalPages, loading: false })
+        this.setState({ scanJobResults: pageJobResults.scanJobResults, pageTotal: pageJobResults.totalPages, loading: false })
     }
 
     async componentDidUpdate(prevProps, prevState) {
         if (prevState.pageNumber !== this.state.pageNumber) {
             const pageJobResults = await this.getPageJobResults();
-            this.setState({ jobResults: pageJobResults.scanJobResults, pageTotal: pageJobResults.totalPages, loading: false })
+            this.setState({ scanJobResults: pageJobResults.scanJobResults, pageTotal: pageJobResults.totalPages, loading: false })
         }
     }
 
