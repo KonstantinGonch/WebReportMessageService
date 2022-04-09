@@ -18,7 +18,7 @@ export class ScanSettings extends Component {
         const response = await getData("api/scanSettings/settings");
 
         if (response) {
-            this.setState({})
+            this.setState({ jobRestartMinutes: response.jobRestartMinutes, pingRetries: response.pingRetries, pingFailureThreat: response.pingFailureThreat })
         }
         this.setState({ loading: false });
     }
