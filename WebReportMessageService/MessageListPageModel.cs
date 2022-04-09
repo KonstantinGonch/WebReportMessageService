@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebReportMessageService
 {
-    public class MessageListPageModel
+    public class MessageListPageModel : BasePageModel
     {
         public IEnumerable<Message> Messages { get; set; }
-        public int PageNumber { get; set; }
-        public int TotalPages { get; set; }
     }
 }

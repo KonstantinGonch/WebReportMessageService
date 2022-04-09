@@ -28,10 +28,15 @@ export class NetworkResourceList extends Component {
         this.setState({ networkResources: pageNetworkResources.networkResources, pageTotal: pageNetworkResources.totalPages, loading: false })
     }
 
+    async componentDidUpdate(prevProps, prevState) {
+        if (prevState.pageNumber !== this.state.pageNumber) {
+            const pageNetworkResources = await this.getPageNetworkResources();
+            this.setState({ networkResources: pageNetworkResources.networkResources, pageTotal: pageNetworkResources.totalPages, loading: false })
+        }
+    }
+
     async onPageChange(pageNumber) {
         this.setState({ loading: true, pageNumber: pageNumber });
-        const pageNetworkResources = await this.getPageNetworkResources();
-        this.setState({ networkResources: pageNetworkResources.networkResources, pageTotal: pageNetworkResources.totalPages, loading: false })
     }
 
     onAddButtonClick() {

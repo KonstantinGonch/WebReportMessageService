@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebReportMessageService
 {
-    public class NetworkResourceListPageModel : BasePageModel
+    public class ScanJobResultListPageModel : BasePageModel
     {
-        public IEnumerable<NetworkResource> NetworkResources { get; set; }
+        public IEnumerable<ScanJobResult> ScanJobResults { get; set; }
     }
 }

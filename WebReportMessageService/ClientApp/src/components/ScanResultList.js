@@ -1,33 +1,32 @@
 ﻿import React, { Component } from 'react';
 import { getData } from '../util.js'
-import { MessageWidget } from './MessageWidget.js'
+import { ScanJobResultWidget } from './ScanJobResultWidget.js'
 import './MessageList.css'
 
-export class MessageList extends Component {
-    static displayName = MessageList.name;
+export class ScanResultList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { messages: [], pageNumber: 1, pageTotal: 0, loading: false };
+        this.state = { scanJobResults: [], pageNumber: 1, pageTotal: 0, loading: false };
 
-        this.getPageMessages = this.getPageMessages.bind(this);
+        this.getPageJobResults = this.getPageJobResults.bind(this);
         this.onPageChange = this.onPageChange.bind(this);
     }
 
-    async getPageMessages() {
-        return await getData("api/message/list?pageNumber=" + this.state.pageNumber);
+    async getPageJobResults() {
+        return await getData("api/scanJob/list?pageNumber=" + this.state.pageNumber);
     }
 
     async componentDidMount() {
         this.setState({ loading: true });
-        const pageMessages = await this.getPageMessages();
-        this.setState({ messages: pageMessages.messages, pageTotal: pageMessages.totalPages, loading: false })
+        const pageJobResults = await this.getPageJobResults();
+        this.setState({ jobResults: pageJobResults.scanJobResults, pageTotal: pageJobResults.totalPages, loading: false })
     }
 
     async componentDidUpdate(prevProps, prevState) {
         if (prevState.pageNumber !== this.state.pageNumber) {
-            const pageMessages = await this.getPageMessages();
-            this.setState({ messages: pageMessages.messages, pageTotal: pageMessages.totalPages, loading: false })
+            const pageJobResults = await this.getPageJobResults();
+            this.setState({ jobResults: pageJobResults.scanJobResults, pageTotal: pageJobResults.totalPages, loading: false })
         }
     }
 
@@ -40,8 +39,9 @@ export class MessageList extends Component {
             <>
                 <main role="main" class="container">
                     <div class="list-group">
-                        {this.state.messages.map(message => <MessageWidget message={message} />)}
+                        {this.state.scanJobResults.map(result => <ScanJobResultWidget result={result} />)}
                     </div>
+                    <a class="nav-link" href="/scanJobSettings">Настройки</a>
                 </main>
                 <nav aria-label="..." class="pagination-container">
                     <ul class="pagination">

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebReportMessageService
 {
-    public class NetworkResourceListPageModel : BasePageModel
+    public abstract class BasePageModel
     {
-        public IEnumerable<NetworkResource> NetworkResources { get; set; }
+        public int PageNumber { get; set; }
+        public int TotalPages { get; set; }
     }
 }
