@@ -36,11 +36,11 @@ namespace WebReportMessageService.Jobs
                     }
                     else
                     {
-                        await Task.Delay(TimeSpan.FromMinutes(1));
-                        using (var dbContext = new AppDataContext())
-                        {
-                            _settings = dbContext.ScanJobSettings.FirstOrDefault();
-                        }
+                        await Task.Delay(TimeSpan.FromMinutes(60));
+                    }
+                    using (var dbContext = new AppDataContext())
+                    {
+                        _settings = dbContext.ScanJobSettings.FirstOrDefault();
                     }
                 }
             });
