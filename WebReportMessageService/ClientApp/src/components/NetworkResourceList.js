@@ -80,9 +80,9 @@ export class NetworkResourceList extends Component {
                                 <span class="sr-only">Загрузка...</span>
                             </div>
                         </div>}
-                    <div class="list-group">
+                    {!this.state.loading && <div class="list-group">
                         {this.state.networkResources.map(netRes => <NetworkResourceWidget networkResource={netRes} onTrashClick={this.onTrashClick} />)}
-                    </div>
+                    </div>}
                     <button type="button" class="btn btn-primary btn-table-add" onClick={this.onAddButtonClick}>{this.state.addRowActive ? "Скрыть" : "Добавить"}</button>
                     {this.state.addRowActive &&
                         <table class="table table-borderless">

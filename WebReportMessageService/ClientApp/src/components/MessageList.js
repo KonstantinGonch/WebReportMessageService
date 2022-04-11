@@ -45,9 +45,9 @@ export class MessageList extends Component {
                                 <span class="sr-only">Загрузка...</span>
                             </div>
                         </div>}
-                    <div class="list-group">
+                    {!this.state.loading && <div class="list-group">
                         {this.state.messages.map(message => <MessageWidget message={message} />)}
-                    </div>
+                    </div>}
                 </main>
                 <nav aria-label="..." class="pagination-container">
                     <ul class="pagination">

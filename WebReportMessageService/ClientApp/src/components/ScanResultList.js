@@ -44,9 +44,9 @@ export class ScanResultList extends Component {
                                 <span class="sr-only">Загрузка...</span>
                             </div>
                         </div>}
-                    <div class="list-group">
+                    {!this.state.loading && <div class="list-group">
                         {this.state.scanJobResults.map(result => <ScanJobResultWidget result={result} />)}
-                    </div>
+                    </div>}
                     <a class="nav-link" href="/scanJobSettings">Настройки</a>
                 </main>
                 <nav aria-label="..." class="pagination-container">
