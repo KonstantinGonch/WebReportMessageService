@@ -5,7 +5,7 @@ export class ScanSettings extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { loading: false, jobRestartMinutes: 60, pingRetries: 3, pingFailureThreat: 1 }
+        this.state = { loading: false, jobRestartMinutes: 60, pingRetries: 3, pingFailureThreat: 1, }
 
         this.onRestartChange = this.onRestartChange.bind(this);
         this.onRetriesChange = this.onRetriesChange.bind(this);
@@ -40,7 +40,7 @@ export class ScanSettings extends Component {
 
         const response = await postData("api/scanSettings/save", { jobRestartMinutes: this.state.jobRestartMinutes, pingRetries: this.state.pingRetries, pingFailureThreat: this.state.pingFailureThreat });
         this.setState({ loading: false });
-
+        alert("Сохранено");
     }
 
     render() {
@@ -62,8 +62,11 @@ export class ScanSettings extends Component {
                         <label>Генерировать угрозу при отсутствии ответа от источников (к-во)</label>
                         <input class="form-control" type="number" value={this.state.pingFailureThreat} onChange={this.onFailureChange} />
                     </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-primary" onClick={this.onSaveClick}>Сохранить</button>
+                    <div class="col-md-6 d-flex p-3">
+                        <button class="btn btn-primary d-flex align-items-end" onClick={this.onSaveClick} disabled={this.state.loading}>
+                            {this.state.loading && <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
+                            Сохранить
+                        </button>
                     </div>
                 </div>
             </div>

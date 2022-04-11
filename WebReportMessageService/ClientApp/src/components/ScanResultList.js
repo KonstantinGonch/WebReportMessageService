@@ -38,6 +38,12 @@ export class ScanResultList extends Component {
         return (
             <>
                 <main role="main" class="container">
+                    {this.state.loading &&
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border text-primary list-spinner" role="status">
+                                <span class="sr-only">Загрузка...</span>
+                            </div>
+                        </div>}
                     <div class="list-group">
                         {this.state.scanJobResults.map(result => <ScanJobResultWidget result={result} />)}
                     </div>
@@ -45,10 +51,10 @@ export class ScanResultList extends Component {
                 </main>
                 <nav aria-label="..." class="pagination-container">
                     <ul class="pagination">
-                        <li className={"page-item" + this.state.pageNumber === 1 ? " disabled" : ""}>
+                        <li className={"page-item" + (this.state.pageNumber === 1 ? " disabled" : "")}>
                             <a class="page-link" onClick={e => this.onPageChange(this.state.pageNumber - 1)}>Назад</a>
                         </li>
-                        <li className={"page-item" + this.state.pageNumber === this.state.pageTotal ? " disabled" : ""}>
+                        <li className={"page-item" + (this.state.pageNumber === this.state.pageTotal ? " disabled" : "")}>
                             <a class="page-link" onClick={e => this.onPageChange(this.state.pageNumber + 1)} >Вперед</a>
                         </li>
                     </ul>

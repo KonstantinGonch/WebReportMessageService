@@ -74,6 +74,12 @@ export class NetworkResourceList extends Component {
             <>
 
                 <main role="main" class="container">
+                    {this.state.loading &&
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border text-primary list-spinner" role="status">
+                                <span class="sr-only">Загрузка...</span>
+                            </div>
+                        </div>}
                     <div class="list-group">
                         {this.state.networkResources.map(netRes => <NetworkResourceWidget networkResource={netRes} onTrashClick={this.onTrashClick} />)}
                     </div>
@@ -86,7 +92,7 @@ export class NetworkResourceList extends Component {
                             <tbody>
                                 <tr>
                                 <td>
-                                    <input type="text" value={this.state.ipAddress} onChange={this.onChangeIpAddress} class="form-control" placeholder="Введите IP-адрес" />
+                                    <input type="text" value={this.state.ipAddress} onChange={this.onChangeIpAddress} class="form-control" placeholder="Введите IP-адрес или URL" />
                                     </td>
                                 <td>
                                     <input type="text" value={this.state.shortName} onChange={this.onChangeShortName} class="form-control" placeholder="Введите название" />
@@ -101,10 +107,10 @@ export class NetworkResourceList extends Component {
                 </main>
                 <nav aria-label="..." class="pagination-container">
                     <ul class="pagination">
-                        <li className={"page-item" + this.state.pageNumber === 1 ? " disabled" : ""}>
+                        <li className={"page-item" + (this.state.pageNumber === 1 ? " disabled" : "")}>
                             <a class="page-link" onClick={e => this.onPageChange(this.state.pageNumber - 1)}>Назад</a>
                         </li>
-                        <li className={"page-item" + this.state.pageNumber === this.state.pageTotal ? " disabled" : ""}>
+                        <li className={"page-item" + (this.state.pageNumber === this.state.pageTotal ? " disabled" : "")}>
                             <a class="page-link" onClick={e => this.onPageChange(this.state.pageNumber + 1)} >Вперед</a>
                         </li>
                     </ul>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
@@ -53,7 +54,7 @@ namespace WebReportMessageService.Jobs
             if (_settings != null)
             {
                 var successPings = 0;
-                var failedIps = new List<string>();
+                var failedResources = new List<string>();
 
                 using (var dbContext = new AppDataContext())
                 {
@@ -65,12 +66,26 @@ namespace WebReportMessageService.Jobs
                         {
                             try
                             {
-                                var reply = _pinger.Send(networkResource.IpAddress);
-                                if (reply.Status == IPStatus.Success)
+                                if (IPAddress.TryParse(networkResource.IpAddress, out IPAddress ipAddress))
                                 {
-                                    success = true;
-                                    successPings += 1;
-                                    break;
+                                    var reply = _pinger.Send(ipAddress);
+                                    if (reply.Status == IPStatus.Success)
+                                    {
+                                        success = true;
+                                        successPings += 1;
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    var webRequest = (HttpWebRequest)WebRequest.Create(networkResource.IpAddress);
+                                    var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                                    if (webResponse.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        success = true;
+                                        successPings += 1;
+                                        break;
+                                    }
                                 }
                                 Thread.Sleep(_pingDelay * 1000);
                             }
@@ -82,7 +97,7 @@ namespace WebReportMessageService.Jobs
 
                         if (!success)
                         {
-                            failedIps.Add(networkResource.IpAddress);
+                            failedResources.Add(networkResource.IpAddress);
                         }
                     }
 
@@ -96,12 +111,12 @@ namespace WebReportMessageService.Jobs
                     };
                     dbContext.ScanJobResults.Add(scanResult);
 
-                    if (failedIps.Count >= _settings.PingFailureThreat)
+                    if (failedResources.Count >= _settings.PingFailureThreat)
                     {
                         var threat = new Threat
                         {
                             DateAppeared = scanDate,
-                            ThreatMessage = $"Выявлена ошибка сканирования. Недоступные ресурсы: {string.Join("; ", failedIps)}"
+                            ThreatMessage = $"Выявлена ошибка сканирования. Недоступные ресурсы: {string.Join("; ", failedResources)}"
                         };
                         dbContext.Add(threat);
                     }
