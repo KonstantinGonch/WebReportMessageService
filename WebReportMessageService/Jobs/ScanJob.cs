@@ -118,7 +118,7 @@ namespace WebReportMessageService.Jobs
                             DateAppeared = scanDate,
                             ThreatMessage = $"Выявлена ошибка сканирования. Недоступные ресурсы: {string.Join("; ", failedResources)}"
                         };
-                        dbContext.Add(threat);
+                        dbContext.Threats.Add(threat);
                     }
 
                     await dbContext.SaveChangesAsync();
