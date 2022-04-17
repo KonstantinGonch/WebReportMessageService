@@ -109,7 +109,6 @@ namespace WebReportMessageService.Jobs
                         SuccessScanned = successPings,
                         TotalResources = resources.Count()
                     };
-                    dbContext.ScanJobResults.Add(scanResult);
 
                     if (failedResources.Count >= _settings.PingFailureThreat)
                     {
@@ -119,8 +118,10 @@ namespace WebReportMessageService.Jobs
                             ThreatMessage = $"Выявлена ошибка сканирования. Недоступные ресурсы: {string.Join("; ", failedResources)}"
                         };
                         dbContext.Threats.Add(threat);
+                        await dbContext.SaveChangesAsync();
+                        scanResult.ThreatId = threat.Id;
                     }
-
+                    dbContext.ScanJobResults.Add(scanResult);
                     await dbContext.SaveChangesAsync();
                 }
             }
