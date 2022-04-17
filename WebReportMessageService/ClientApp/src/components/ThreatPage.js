@@ -32,7 +32,7 @@ export class ThreatPage extends Component {
                             <h1>Время возникновения угрозы:</h1>
                         </div>
                         <div class="row">
-                            {this.state.threat && <h5>{date.toLocaleDateString()}</h5>}
+                            {this.state.threat && <h5>{date.toLocaleString()}</h5>}
                         </div>
                         <div class="row">
                             <h1>Причина возникновения:</h1>

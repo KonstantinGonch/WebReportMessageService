@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebReportMessageService", "WebReportMessageService\WebReportMessageService.csproj", "{8754ADA6-5FA4-4702-830F-EF6FEE9DD568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebReportMessageService", "WebReportMessageService\WebReportMessageService.csproj", "{8754ADA6-5FA4-4702-830F-EF6FEE9DD568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorConsoleApp", "MonitorConsoleApp\MonitorConsoleApp.csproj", "{0D622F99-E8D1-45E6-8F8E-BBCA54FAD011}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8754ADA6-5FA4-4702-830F-EF6FEE9DD568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8754ADA6-5FA4-4702-830F-EF6FEE9DD568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8754ADA6-5FA4-4702-830F-EF6FEE9DD568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D622F99-E8D1-45E6-8F8E-BBCA54FAD011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D622F99-E8D1-45E6-8F8E-BBCA54FAD011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D622F99-E8D1-45E6-8F8E-BBCA54FAD011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D622F99-E8D1-45E6-8F8E-BBCA54FAD011}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
