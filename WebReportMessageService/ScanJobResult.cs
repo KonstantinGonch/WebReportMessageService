@@ -12,5 +12,6 @@ namespace WebReportMessageService
         public int SuccessScanned { get; set; }
         public DateTime ScanDate { get; set; }
         public DateTime PlanNextScan { get; set; }
+        public long ThreatId { get; set; }
     }
 }
