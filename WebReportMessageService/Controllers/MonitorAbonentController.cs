@@ -12,6 +12,7 @@ namespace WebReportMessageService.Controllers
     public class MonitorAbonentController : ControllerBase
     {
         private readonly ILogger<NetworkResourceController> _logger;
+        private int _pageSize = 5;
         public MonitorAbonentController(ILogger<NetworkResourceController> logger)
         {
             _logger = logger;
@@ -44,6 +45,39 @@ namespace WebReportMessageService.Controllers
                 dbContext.MonitorMeasurements.Add(monitorMeasurement);
                 await dbContext.SaveChangesAsync();
             }
+        }
+
+        [HttpGet]
+        [Route("list")]
+        public MonitorAbonentsPageModel Get(int pageNumber)
+        {
+            using (var dbContext = new AppDataContext())
+            {
+                var pageAbonents = dbContext.MonitorAbonents.Skip((pageNumber - 1) * _pageSize).Take(_pageSize).ToList();
+                var totalPages = (int)Math.Ceiling(dbContext.MonitorAbonents.Count() / (double)_pageSize);
+                var pageAbonentInfos = new List<MonitorAbonentExtendedInfo>();
+                foreach(var abonent in pageAbonents)
+                {
+                    pageAbonentInfos.Add(BuildExtendedModel(abonent, dbContext));
+                }
+                return new MonitorAbonentsPageModel { MonitorAbonents = pageAbonentInfos, TotalPages = totalPages, PageNumber = pageNumber };
+            }
+        }
+
+        private MonitorAbonentExtendedInfo BuildExtendedModel(MonitorAbonent abonent, AppDataContext ctx)
+        {
+            var extendedAbonentModel = new MonitorAbonentExtendedInfo(abonent);
+            var lastSync = ctx.MonitorMeasurements.Where(m => m.MonitorAbonentId == abonent.Id).OrderByDescending(m => m.Id).FirstOrDefault();
+            extendedAbonentModel.LastSync = lastSync.Date;
+            extendedAbonentModel.AttentionEvents = GetPossibleTroubles(extendedAbonentModel, ctx);
+            return extendedAbonentModel;
+        }
+
+        private int GetPossibleTroubles(MonitorAbonentExtendedInfo abonent, AppDataContext ctx)
+        {
+            var lastMeasurements = ctx.MonitorMeasurements.Where(m => m.MonitorAbonentId == abonent.Id && m.Date >= DateTime.Now.AddDays(-7));
+            var threatIds = lastMeasurements.Where(measurement => measurement.ThreatId > 0).Select(measurement => measurement.ThreatId).ToList();
+            return ctx.Threats.Count(th => threatIds.Contains(th.Id));
         }
     }
 }

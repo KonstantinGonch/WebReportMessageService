@@ -24,7 +24,7 @@ export class NavMenu extends Component {
     render() {
         return (
             <header>
-                <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
+                <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3">
                     <Container>
                         <NavbarBrand tag={Link} to="/">Эмулятор сообщений</NavbarBrand>
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -41,6 +41,9 @@ export class NavMenu extends Component {
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/scanJobResults">Журнал сканирований</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/monitorAbonents">Пользователи Монитора</a>
                                 </li>
                             </ul>
                         </Collapse>

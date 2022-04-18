@@ -8,6 +8,7 @@ import { NetworkResourceList } from './components/NetworkResourceList';
 import { ScanResultList } from './components/ScanResultList';
 import { ScanSettings } from './components/ScanSettings';
 import { ThreatPage } from './components/ThreatPage';
+import { MonitorAbonentList } from './components/MonitorAbonentList';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -22,6 +23,7 @@ export default class App extends Component {
                 <Route path='/scanJobSettings' component={ScanSettings} />
                 <Route path='/scanJobSettings' component={ScanSettings} />
                 <Route path='/threat/:id' component={ThreatPage} />
+                <Route path='/monitorAbonents' component={MonitorAbonentList} />
             </Layout>
         );
     }

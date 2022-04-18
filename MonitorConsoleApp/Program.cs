@@ -45,7 +45,7 @@ namespace MonitorConsoleApp
                     var ramPercent = ramCounter.NextValue();
                     var measurementValues = new Dictionary<string, string>
                     {
-                        {"uptime", uptime.Minutes.ToString() },
+                        {"uptime", ((int)Math.Round(uptime.TotalMinutes)).ToString() },
                         {"cpuUsage", ((int)Math.Round(cpuPercent)).ToString() },
                         {"ramUsage", ((int)Math.Round(ramPercent)).ToString() },
                         {"monitorAbonentId", hostId.ToString() }
