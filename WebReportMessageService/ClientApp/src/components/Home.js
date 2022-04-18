@@ -44,7 +44,7 @@ export class Home extends Component {
                             <label for="exampleFormControlSelect1">Категория</label>
                             <select disabled={this.state.loading} class="form-control" id="exampleFormControlSelect1" value={this.state.messageType} onChange={this.onChangeMessageType}>
                                 <option key={0} value={0}>Неформализованное обращение</option>
-                                <option key={1} value={1}>Отчет о сбое</option>
+                                <option key={1} value={1}>Предполагаемая угроза</option>
                                 <option key={2} value={2}>Обратная связь</option>
                             </select>
                         </div>

@@ -33,5 +33,17 @@ namespace WebReportMessageService.Controllers
                 return existingAbonent.Id;
             }
         }
+
+        [HttpPost]
+        [Route("saveMeasurement")]
+        public async Task AcceptMeasurement(MonitorMeasurement monitorMeasurement)
+        {
+            monitorMeasurement.Date = DateTime.Now;
+            using (var dbContext = new AppDataContext())
+            {
+                dbContext.MonitorMeasurements.Add(monitorMeasurement);
+                await dbContext.SaveChangesAsync();
+            }
+        }
     }
 }
