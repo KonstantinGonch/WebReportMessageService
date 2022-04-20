@@ -9,6 +9,7 @@ import { ScanResultList } from './components/ScanResultList';
 import { ScanSettings } from './components/ScanSettings';
 import { ThreatPage } from './components/ThreatPage';
 import { MonitorAbonentList } from './components/MonitorAbonentList';
+import { MonitorAbonentPage } from './components/MonitorAbonentPage';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -24,6 +25,7 @@ export default class App extends Component {
                 <Route path='/scanJobSettings' component={ScanSettings} />
                 <Route path='/threat/:id' component={ThreatPage} />
                 <Route path='/monitorAbonents' component={MonitorAbonentList} />
+                <Route path='/monitorAbonent/:id' component={MonitorAbonentPage} />
             </Layout>
         );
     }

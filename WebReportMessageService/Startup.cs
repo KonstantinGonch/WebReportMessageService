@@ -24,6 +24,7 @@ namespace WebReportMessageService
             services.AddControllersWithViews();
             services.AddSwaggerGen();
             services.AddHostedService<ScanJob>();
+            services.AddHostedService<MonitorThreatDetectorJob>();
 
 
             // In production, the React files will be served from this directory

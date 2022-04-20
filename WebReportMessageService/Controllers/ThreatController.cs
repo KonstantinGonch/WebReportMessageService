@@ -27,5 +27,18 @@ namespace WebReportMessageService.Controllers
                 return dbContext.Threats.FirstOrDefault(e => e.Id == id);
             }
         }
+
+        [HttpGet]
+        [Route("monitorAbonentThreats")]
+        public IEnumerable<Threat> GetMonitorAbonentThreats(long id)
+        {
+            using (var dbContext = new AppDataContext())
+            {
+                var threatIds = dbContext.MonitorMeasurements.Where(m => m.MonitorAbonentId == id && m.ThreatId > 0 && m.Date > DateTime.Now.AddDays(-7))
+                    .Select(m => m.ThreatId).Distinct();
+
+                return dbContext.Threats.Where(t => threatIds.Contains(t.Id)).ToList();
+            }
+        }
     }
 }

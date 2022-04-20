@@ -56,11 +56,22 @@ namespace WebReportMessageService.Controllers
                 var pageAbonents = dbContext.MonitorAbonents.Skip((pageNumber - 1) * _pageSize).Take(_pageSize).ToList();
                 var totalPages = (int)Math.Ceiling(dbContext.MonitorAbonents.Count() / (double)_pageSize);
                 var pageAbonentInfos = new List<MonitorAbonentExtendedInfo>();
-                foreach(var abonent in pageAbonents)
+                foreach (var abonent in pageAbonents)
                 {
                     pageAbonentInfos.Add(BuildExtendedModel(abonent, dbContext));
                 }
                 return new MonitorAbonentsPageModel { MonitorAbonents = pageAbonentInfos, TotalPages = totalPages, PageNumber = pageNumber };
+            }
+        }
+
+        [HttpGet]
+        [Route("actualMeasurements")]
+        public IEnumerable<MonitorMeasurement> GetLastMeasurements(long abonentId)
+        {
+            using (var dbContext = new AppDataContext())
+            {
+                return dbContext.MonitorMeasurements
+                    .Where(m => m.MonitorAbonentId == abonentId && m.Date > DateTime.Now.AddDays(-7)).ToList();
             }
         }
 
