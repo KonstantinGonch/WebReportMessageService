@@ -15,6 +15,7 @@ namespace WebReportMessageService
         public DbSet<ScanJobSettings> ScanJobSettings { get; set; }
         public DbSet<MonitorAbonent> MonitorAbonents { get; set; }
         public DbSet<MonitorMeasurement> MonitorMeasurements { get; set; }
+        public DbSet<IncidentReport> IncidentReports { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

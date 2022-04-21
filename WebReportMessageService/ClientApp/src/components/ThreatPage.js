@@ -40,6 +40,9 @@ export class ThreatPage extends Component {
                         <div class="row">
                             {this.state.threat && <h5>{this.state.threat.threatMessage}</h5>}
                         </div>
+                        <div class="row">
+                        {this.state.threat && <button class="btn btn-primary mt-2"><a class="link-dark" href={`createIncident/${this.state.threat.id}`}>Сформировать обращение об инциденте</a></button>}
+                        </div>
                     </>}
             </main>
         );
