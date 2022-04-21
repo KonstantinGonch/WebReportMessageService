@@ -12,7 +12,7 @@ namespace WebReportMessageService.Controllers
     public class MonitorAbonentController : ControllerBase
     {
         private readonly ILogger<NetworkResourceController> _logger;
-        private int _pageSize = 5;
+        private int _pageSize = 4;
         public MonitorAbonentController(ILogger<NetworkResourceController> logger)
         {
             _logger = logger;

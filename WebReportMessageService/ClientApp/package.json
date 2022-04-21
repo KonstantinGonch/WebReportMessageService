@@ -17,7 +17,8 @@
     "rimraf": "^2.6.2",
     "chartjs-2-react": "1.1.5",
     "recharts": "2.1.9",
-    "react-fontawesome": "1.7.1"
+    "react-fontawesome": "1.7.1",
+    "cdbreact": "1.5.1"
   },
   "devDependencies": {
     "ajv": "^6.9.1",

@@ -32,7 +32,7 @@ export class Home extends Component {
 
     render() {
         return (
-            <main role="main" class="container">
+            <main role="main" class="container pt-5">
                 <div class="starter-template">
                     <h1>Введите содержание и категорию сообщения</h1>
                     <form onSubmit={this.onSubmitForm}>

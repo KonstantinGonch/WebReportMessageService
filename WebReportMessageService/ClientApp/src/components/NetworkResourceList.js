@@ -73,7 +73,10 @@ export class NetworkResourceList extends Component {
         return (
             <>
 
-                <main role="main" class="container">
+                <main role="main" class="container pt-3">
+                    <div class="d-flex justify-content-center pb-2">
+                        <h2>Сканируемые ресурсы</h2>
+                    </div>
                     {this.state.loading &&
                         <div class="d-flex justify-content-center">
                             <div class="spinner-border text-primary list-spinner" role="status">
@@ -91,15 +94,15 @@ export class NetworkResourceList extends Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                <td>
-                                    <input type="text" value={this.state.ipAddress} onChange={this.onChangeIpAddress} class="form-control" placeholder="Введите IP-адрес или URL" />
+                                    <td>
+                                        <input type="text" value={this.state.ipAddress} onChange={this.onChangeIpAddress} class="form-control" placeholder="Введите IP-адрес или URL" />
                                     </td>
-                                <td>
-                                    <input type="text" value={this.state.shortName} onChange={this.onChangeShortName} class="form-control" placeholder="Введите название" />
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary" onClick={this.onAddResourceButtonClick}>Подтвердить</button>
-                                </td>
+                                    <td>
+                                        <input type="text" value={this.state.shortName} onChange={this.onChangeShortName} class="form-control" placeholder="Введите название" />
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" onClick={this.onAddResourceButtonClick}>Подтвердить</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

@@ -23,7 +23,6 @@ export default class App extends Component {
                 <Route path='/scanResources' component={NetworkResourceList} />
                 <Route path='/scanJobResults' component={ScanResultList} />
                 <Route path='/scanJobSettings' component={ScanSettings} />
-                <Route path='/scanJobSettings' component={ScanSettings} />
                 <Route path='/threat/:id' component={ThreatPage} />
                 <Route path='/monitorAbonents' component={MonitorAbonentList} />
                 <Route path='/monitorAbonent/:id' component={MonitorAbonentPage} />

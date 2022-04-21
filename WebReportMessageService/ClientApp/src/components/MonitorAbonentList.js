@@ -38,7 +38,10 @@ export class MonitorAbonentList extends Component {
     render() {
         return (
             <>
-                <main role="main" class="container">
+                <main role="main" class="container pt-3">
+                    <div class="d-flex justify-content-center pb-2">
+                        <h2>Пользователи Монитора</h2>
+                    </div>
                     {this.state.loading &&
                         <div class="d-flex justify-content-center">
                             <div class="spinner-border text-primary list-spinner" role="status">
@@ -48,7 +51,6 @@ export class MonitorAbonentList extends Component {
                     {!this.state.loading && <div class="list-group">
                         {this.state.monitorAbonents.map(monitorAbonent => <MonitorAbonentWidget abonent={monitorAbonent} />)}
                     </div>}
-                    <a class="nav-link" href="/scanJobSettings">Настройки</a>
                 </main>
                 <nav aria-label="..." class="pagination-container">
                     <ul class="pagination">

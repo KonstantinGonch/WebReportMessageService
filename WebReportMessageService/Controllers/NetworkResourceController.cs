@@ -12,7 +12,7 @@ namespace WebReportMessageService.Controllers
     public class NetworkResourceController : ControllerBase
     {
         private readonly ILogger<NetworkResourceController> _logger;
-        private const int _pageSize = 10;
+        private const int _pageSize = 8;
 
         public NetworkResourceController(ILogger<NetworkResourceController> logger)
         {

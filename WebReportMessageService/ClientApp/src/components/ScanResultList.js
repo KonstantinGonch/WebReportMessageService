@@ -37,7 +37,10 @@ export class ScanResultList extends Component {
     render() {
         return (
             <>
-                <main role="main" class="container">
+                <main role="main" class="container pt-3">
+                    <div class="d-flex justify-content-center pb-2">
+                        <h2>Результаты сканирования</h2>
+                    </div>
                     {this.state.loading &&
                         <div class="d-flex justify-content-center">
                             <div class="spinner-border text-primary list-spinner" role="status">

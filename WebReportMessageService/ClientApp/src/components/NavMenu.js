@@ -1,6 +1,12 @@
 ﻿import React, { Component } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'reactstrap';
+import {
+    CDBSidebar,
+    CDBSidebarContent,
+    CDBSidebarHeader,
+    CDBSidebarMenu,
+    CDBSidebarMenuItem,
+} from 'cdbreact';
 import './NavMenu.css';
 
 export class NavMenu extends Component {
@@ -23,33 +29,41 @@ export class NavMenu extends Component {
 
     render() {
         return (
-            <header>
-                <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3">
-                    <Container>
-                        <NavbarBrand tag={Link} to="/">Эмулятор сообщений</NavbarBrand>
-                        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-                        <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-                            <ul className="navbar-nav flex-grow">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/messages">Сообщения</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">Ввод сообщения</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/scanResources">Сканируемые ресурсы</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/scanJobResults">Журнал сканирований</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/monitorAbonents">Пользователи Монитора</a>
-                                </li>
-                            </ul>
-                        </Collapse>
-                    </Container>
-                </Navbar>
-            </header>
+            <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+                <CDBSidebar textColor="#fff" backgroundColor="#333">
+                    <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+                        <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+                            Меню навигации
+                        </a>
+                    </CDBSidebarHeader>
+
+                    <CDBSidebarContent className="sidebar-content">
+                        <CDBSidebarMenu>
+                            <NavLink exact href="/dashboard" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="columns">Главная</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink href="/" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="comment">Ввод сообщения</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink href="/messages" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="envelope">Список сообщений</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink href="/scanResources" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="list">Сканируемые ресурсы</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink href="/scanJobResults" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="check-square">Результаты сканирования</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink href="/monitorAbonents" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="user">Пользователи Монитора</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink href="/reports" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="exclamation">Инциденты</CDBSidebarMenuItem>
+                            </NavLink>
+                        </CDBSidebarMenu>
+                    </CDBSidebarContent>
+                </CDBSidebar>
+            </div>
         );
     }
 }

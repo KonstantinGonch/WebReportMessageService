@@ -26,7 +26,7 @@ export class MonitorAbonentPage extends Component {
 
     render() {
         return (
-            <div class="container">
+            <div class="container pt-3">
                 <div class="row d-flex justify-content-center">
                     <h1>Информация о пользователе</h1>
                 </div>

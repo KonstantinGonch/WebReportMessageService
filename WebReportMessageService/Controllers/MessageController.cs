@@ -12,7 +12,7 @@ namespace WebReportMessageService.Controllers
     public class MessageController : ControllerBase
     {
         private readonly ILogger<MessageController> _logger;
-        private const int _pageSize = 5;
+        private const int _pageSize = 8;
 
         public MessageController(ILogger<MessageController> logger)
         {
