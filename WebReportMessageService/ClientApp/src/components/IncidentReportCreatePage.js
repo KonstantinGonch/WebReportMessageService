@@ -76,7 +76,7 @@ export class IncidentReportCreatePage extends Component {
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="floatingAttackType">Вектор атаки</label>
+                                <label for="floatingAttackType">Тип атаки</label>
                                 <select class="form-control" id="floatingAttackType" value={this.state.typeOfAttack} onChange={this.onChangeAttackType}>
                                     <option key={0} value={0}>Изменение маршрутно-адресной информации</option>
                                     <option key={1} value={1}>Использование вредоносного программного обеспечения</option>

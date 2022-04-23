@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace WebReportMessageService.Controllers
 {
-    [EnableCors]
     [ApiController]
     [Route("api/incident")]
     public class IncidentReportController : ControllerBase
     {
+        private int _pageSize = 8;
         [HttpPost]
         [Route("save")]
         public async void Save(IncidentReport report)
@@ -48,6 +48,18 @@ namespace WebReportMessageService.Controllers
             using (var dbContext = new AppDataContext())
             {
                 return dbContext.IncidentReports.ToList();
+            }
+        }
+
+        [HttpGet]
+        [Route("list")]
+        public IncidentReportPageModel List(int pageNumber)
+        {
+            using (var dbContext = new AppDataContext())
+            {
+                var pageReports = dbContext.IncidentReports.OrderByDescending(m => m.Id).Skip((pageNumber - 1) * _pageSize).Take(_pageSize).ToList();
+                var totalPages = (int)Math.Ceiling(dbContext.IncidentReports.Count() / (double)_pageSize);
+                return new IncidentReportPageModel { IncidentReports = pageReports, TotalPages = totalPages, PageNumber = pageNumber };
             }
         }
     }

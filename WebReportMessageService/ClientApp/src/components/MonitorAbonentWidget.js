@@ -11,7 +11,7 @@ export class MonitorAbonentWidget extends Component {
         var lastSyncDate = new Date(this.props.abonent.lastSync);
         return (
             <div class="list-group-item list-group-item-action flex-column align-items-start">
-                <a href={`monitorAbonent/${this.props.abonent.id}`}>
+                <a class="link-dark" href={`monitorAbonent/${this.props.abonent.id}`}>
                 <div class="row">
                     <div class="col-md-6">
                         <h3>{ this.props.abonent.hostName}</h3>

@@ -11,6 +11,8 @@ import { ThreatPage } from './components/ThreatPage';
 import { MonitorAbonentList } from './components/MonitorAbonentList';
 import { MonitorAbonentPage } from './components/MonitorAbonentPage';
 import { IncidentReportCreatePage } from './components/IncidentReportCreatePage';
+import { IncidentReportList } from './components/IncidentReportList';
+import { DashboardPage } from './components/DashboardPage';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -18,7 +20,7 @@ export default class App extends Component {
     render() {
         return (
             <Layout>
-                <Route exact path='/' component={Home} />
+                <Route exact path='/' component={DashboardPage} />
                 <Route path='/messages' component={MessageList} />
                 <Route path='/scanResources' component={NetworkResourceList} />
                 <Route path='/scanJobResults' component={ScanResultList} />
@@ -27,6 +29,8 @@ export default class App extends Component {
                 <Route path='/monitorAbonents' component={MonitorAbonentList} />
                 <Route path='/monitorAbonent/:id' component={MonitorAbonentPage} />
                 <Route path='/createIncident/:threatId' component={IncidentReportCreatePage} />
+                <Route path='/reports' component={IncidentReportList} />
+                <Route path='/sendMessage' component={Home} />
             </Layout>
         );
     }

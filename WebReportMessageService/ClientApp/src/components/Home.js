@@ -20,6 +20,7 @@ export class Home extends Component {
         const response = await postData("api/message/save", { content: this.state.messageContent, messageType: this.state.messageType })
 
         this.setState({ loading: false });
+        alert("Сообщение сохранено");
     }
 
     onChangeMessageContent(e) {

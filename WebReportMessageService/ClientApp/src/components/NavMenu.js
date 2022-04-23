@@ -39,10 +39,10 @@ export class NavMenu extends Component {
 
                     <CDBSidebarContent className="sidebar-content">
                         <CDBSidebarMenu>
-                            <NavLink exact href="/dashboard" activeClassName="activeClicked">
+                            <NavLink exact href="/" activeClassName="activeClicked">
                                 <CDBSidebarMenuItem icon="columns">Главная</CDBSidebarMenuItem>
                             </NavLink>
-                            <NavLink href="/" activeClassName="activeClicked">
+                            <NavLink href="/sendMessage" activeClassName="activeClicked">
                                 <CDBSidebarMenuItem icon="comment">Ввод сообщения</CDBSidebarMenuItem>
                             </NavLink>
                             <NavLink href="/messages" activeClassName="activeClicked">

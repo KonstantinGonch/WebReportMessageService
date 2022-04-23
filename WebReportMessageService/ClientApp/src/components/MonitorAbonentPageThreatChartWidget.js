@@ -26,7 +26,7 @@ export class MonitorAbonentPageThreatChartWidget extends Component {
                                 startAngle={180}
                                 endAngle={0}
                                 data={data}
-                                cx="50%"
+                                cx="60%"
                                 cy="65%"
                                 outerRadius={150}
                                 fill="#8884d8"

@@ -11,7 +11,7 @@ export class Layout extends Component {
                 <div class="">
                     <NavMenu />
                 </div>
-                <div class="w-100 d-flex justify-content-center">
+                <div class="w-100 d-flex justify-content-center" style={{ backgroundColor: "#EFEEF0" }}>
                     <Container>
                         {this.props.children}
                     </Container>
