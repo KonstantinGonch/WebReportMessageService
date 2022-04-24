@@ -42,5 +42,15 @@ namespace WebReportMessageService.Controllers
                 await dbContext.SaveChangesAsync();
             }
         }
+
+        [HttpGet]
+        [Route("getAll")]
+        public IEnumerable<Message> GetAllMessages()
+        {
+            using (var dbContext = new AppDataContext())
+            {
+                return dbContext.Messages.ToList();
+            }
+        }
     }
 }
