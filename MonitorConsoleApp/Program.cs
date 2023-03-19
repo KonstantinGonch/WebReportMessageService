@@ -12,7 +12,7 @@ namespace MonitorConsoleApp
 {
     class Program
     {
-        const string SERVICE_URL = "http://82.146.56.114";
+        const string SERVICE_URL = "http://188.120.236.182";
         static readonly TimeSpan DELAY = TimeSpan.FromMinutes(5);
         static async Task Main(string[] args)
         {

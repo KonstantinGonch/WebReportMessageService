@@ -21,17 +21,20 @@ namespace WebReportMessageService.Controllers
                 var threatNumber = 0;
                 var dateThreshold = DateTime.Now.AddDays(-7);
                 var registeredThreats = dbContext.Threats.Where(t => t.DateAppeared >= dateThreshold).OrderBy(t => t.DateAppeared).ToList();
-                var countDate = registeredThreats[0].DateAppeared;
-                while (countDate < DateTime.Now)
+                if (registeredThreats.Any())
                 {
-                    var hourThreats = registeredThreats.Count(t => t.DateAppeared >= countDate && t.DateAppeared <= countDate.AddHours(1));
-                    threatNumber += hourThreats;
-                    threatData.Add(new ThreatTimeData
+                    var countDate = registeredThreats[0].DateAppeared;
+                    while (countDate < DateTime.Now)
                     {
-                        Threats = threatNumber,
-                        DateTime = countDate
-                    });
-                    countDate = countDate.AddHours(1);
+                        var hourThreats = registeredThreats.Count(t => t.DateAppeared >= countDate && t.DateAppeared <= countDate.AddHours(1));
+                        threatNumber += hourThreats;
+                        threatData.Add(new ThreatTimeData
+                        {
+                            Threats = threatNumber,
+                            DateTime = countDate
+                        });
+                        countDate = countDate.AddHours(1);
+                    }
                 }
                 return threatData;
             }
@@ -88,17 +91,20 @@ namespace WebReportMessageService.Controllers
                 var threatData = new List<BadMessagesTimeData>();
                 var threatNumber = 0;
                 var registeredMessages = dbContext.Messages.OrderBy(t => t.MessageDate).ToList();
-                var countDate = registeredMessages[0].MessageDate;
-                while (countDate < DateTime.Now)
+                if (registeredMessages.Any())
                 {
-                    var hourMessages = registeredMessages.Count(t => t.MessageDate >= countDate && t.MessageDate <= countDate.AddHours(1) && t.MessageType == MessageType.ErrorReport);
-                    threatNumber += hourMessages;
-                    threatData.Add(new BadMessagesTimeData
+                    var countDate = registeredMessages[0].MessageDate;
+                    while (countDate < DateTime.Now)
                     {
-                        Threats = threatNumber,
-                        DateTime = countDate
-                    });
-                    countDate = countDate.AddHours(1);
+                        var hourMessages = registeredMessages.Count(t => t.MessageDate >= countDate && t.MessageDate <= countDate.AddHours(1) && t.MessageType == MessageType.ErrorReport);
+                        threatNumber += hourMessages;
+                        threatData.Add(new BadMessagesTimeData
+                        {
+                            Threats = threatNumber,
+                            DateTime = countDate
+                        });
+                        countDate = countDate.AddHours(1);
+                    }
                 }
                 return threatData;
             }

@@ -19,7 +19,7 @@ namespace WebReportMessageService
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=82.146.56.114;user=external;password=superFinashka;database=Ural;", new MySqlServerVersion(new Version(8, 0, 11)));
+            optionsBuilder.UseMySql("server=188.120.236.182;user=external;password=superFinashka;database=Ural;", new MySqlServerVersion(new Version(8, 0, 11)));
         }
     }
 }
